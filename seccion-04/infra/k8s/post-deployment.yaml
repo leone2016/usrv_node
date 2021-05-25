@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: posts # search pod label
+  template: # POD init
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          image: leonardo/posts # :0.0.1 if we not specify version k8 use the latest version (in this case local)
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-nodeport-svc
+spec:
+  type: NodePort
+  selector:
+    app: posts # label to find PODS
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000 # port to expose outside, could be different to targetPort
+      targetPort: 4000 #usrv post service (same of posts/index.js)
