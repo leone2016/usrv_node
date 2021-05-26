@@ -589,6 +589,7 @@ kubectl exec -it posts-depl-6db458fb5c-q7khn -- cat index.js
 **[⬆ back to top](#table-of-contents)**
 
 ### Adding Query, Moderation and Comments
+> class 85
 
 Adding More Services
 
@@ -597,17 +598,21 @@ Adding More Services
 kubectl get services
 ```
 - Update the URL's in each to reach out to the 'event-bus-srv'
-- Build images + push them to docker hub
+- Build images + push them to docker hub **( omit this if it's local )**
+
 ```console
 cd seccion-04/comments/
 docker build -t leonardo/comments .
+
 docker push leonardo/comments
 ```
+
 ```console
 cd seccion-04/moderation/
 docker build -t leonardo/moderation .
 docker push leonardo/moderation
 ```
+
 ```console
 cd seccion-04/query/
 docker build -t leonardo/query .
@@ -627,6 +632,8 @@ kubectl get services
 **[⬆ back to top](#table-of-contents)**
 
 ### Testing Communication
+> class 86
+
 
 Adding More Services
 
@@ -652,6 +659,8 @@ kubectl get services
 **[⬆ back to top](#table-of-contents)**
 
 ### Load Balancer Services
+> class 87
+
 
 ![](printScreen/react.jpg)
 ![](printScreen/initial.jpg)
@@ -662,6 +671,8 @@ kubectl get services
 **[⬆ back to top](#table-of-contents)**
 
 ### Load Balancers and Ingress
+> class 88
+
 
 Load Balancer Service
 
@@ -677,6 +688,7 @@ Ingress or Ingress Controller
 **[⬆ back to top](#table-of-contents)**
 
 ### Installing Ingress-Nginx
+> class 90
 
 ingress-nginx
 - Project that will create a Load Balancer Service + an Ingress for us
@@ -693,6 +705,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 **[⬆ back to top](#table-of-contents)**
 
 ### Writing Ingress Config Files
+> class 92
+
 
 ![](printScreen/lb-2.jpg)
 
@@ -704,6 +718,8 @@ kubectl apply -f ingress-srv.yaml
 **[⬆ back to top](#table-of-contents)**
 
 ### Hosts File Tweak
+> class 94
+
 
 ![](printScreen/hosts.jpg)
 
@@ -722,12 +738,16 @@ code /etc/hosts
 **[⬆ back to top](#table-of-contents)**
 
 ### Quick Note
+> class 95
+
 
 [React-Scripts v3.4.1 fails to start in Docker](https://github.com/facebook/create-react-app/issues/8688)
 
 **[⬆ back to top](#table-of-contents)**
 
 ### Deploying the React App
+> class 96
+
 
 ```console
 cd seccion-04/client/
@@ -742,6 +762,8 @@ kubectl apply -f client-depl.yaml
 **[⬆ back to top](#table-of-contents)**
 
 ### Unique Route Paths
+> class 97
+
 
 ![](printScreen/request.jpg)
 
@@ -759,6 +781,8 @@ kubectl rollout restart deployment posts-depl
 **[⬆ back to top](#table-of-contents)**
 
 ### Final Route Config
+> class 98
+
 
 ```console
 cd seccion-04/infra/k8s/
@@ -769,6 +793,8 @@ kubectl get pod
 **[⬆ back to top](#table-of-contents)**
 
 ### Introducing Skaffold
+> class 99
+
 
 Skaffold
 
@@ -780,12 +806,16 @@ Skaffold
 **[⬆ back to top](#table-of-contents)**
 
 ### Skaffold Setup
+> class 100
+
 
 See blog/skaffold.yaml 
 
 **[⬆ back to top](#table-of-contents)**
 
 ### First Time Skaffold Startup
+> class 101
+
 
 ```console
 cd seccion-04/
@@ -794,6 +824,8 @@ skaffold dev
 **[⬆ back to top](#table-of-contents)**
 
 ### A Few Notes on Skaffold
+> class 102
+
 
 - Restart skaffold if encounter error message
 - kubectl will remove all kubernetes objects when exit

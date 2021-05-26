@@ -10,7 +10,7 @@ Tabla de contenido
 * [**Section 01: Fundamental Ideas Around Microservices**]()
 * [**Section 02: A Mini-Microservices App**]()
 * [**Section 03: Running Services with Docker**]()
-* [**Section 04: Orchestrating Collections of Services with Kubernetes**](seccion-04/README.md)
+* [**Section 04: Orchestrating Collections of Services with Kubernetes**](seccion-04)
 * [**Section 05: Architecture of Multi-Service Apps**]()
 * [**Section 06: Leveraging a Cloud Environment for Development**]()
 * [**Section 07: Response Normalization Strategies**]()

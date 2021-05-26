@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comments # search pod label
+  template: # POD init
+    metadata:
+      labels:
+        app: comments
+    spec:
+      containers:
+        - name: comments
+          image: leonardo/comments
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-svc
+spec:
+  type: NodePort
+  selector:
+    app: comments # label to find PODS line:13
+  ports:
+    - name: comments
+      protocol: TCP
+      port: 4005 # port to expose outside, could be different to targetPort
+      targetPort: 4005 #usrv post service (same of comments/index.js)

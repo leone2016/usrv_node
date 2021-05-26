@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-bus-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-bus # search pod label
+  template: # POD init
+    metadata:
+      labels:
+        app: event-bus
+    spec:
+      containers:
+        - name: event-bus
+          image: leonardo/event-bus
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-bus-svc
+spec:
+  type: NodePort
+  selector:
+    app: event-bus # label to find PODS line:13
+  ports:
+    - name: event-bus
+      protocol: TCP
+      port: 4005 # port to expose outside, could be different to targetPort
+      targetPort: 4005 #usrv post service (same of event-bus/index.js)
